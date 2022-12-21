@@ -1,11 +1,12 @@
 import React from "react";
 
-function PatientVitals(){
+function PatientVitals(props: any) {
+  const { id } = props;
 
   return (
-<>
-<p>Vitals</p>
-</>
+    <>
+      <p>Vitals</p>
+    </>
   );
 }
 

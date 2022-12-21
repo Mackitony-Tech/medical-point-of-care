@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import PatientDetails from "../PatientDetails/patientDetails.component";
+import PatientVisits from "../PatientVisits/patientVisits.component";
 import { SearchPatient } from "./patientSearch.resource";
 
 function PatientSearch() {
   const [patientName, setPatientName] = useState("");
   const [data, setData] = useState([]);
+  const [patientData, setPatientData] = useState({});
   const navigate = useNavigate();
 
   const handleSearchChange = (e: any) => {
@@ -29,9 +31,13 @@ function PatientSearch() {
       setData(results);
     });
   };
-  const handleRowClick = (e: any) => {
-    navigate(`/patient/${e.id}`);
-    PatientDetails();
+  const handleRowClick = (patientData: any) => {
+    console.log(patientData);
+
+    navigate(`/patient/${patientData.id}`);
+    setPatientData(patientData);
+    // eslint-disable-next-line no-lone-blocks
+    {patientData && <PatientVisits {...patientData}/>}
   };
   const headers = [
     { key: "name", header: "Name" },
