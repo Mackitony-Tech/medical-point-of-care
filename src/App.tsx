@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/patient" element={<PatientDetails />} />
+        <Route path="/patient/:patientuuid?" element={<PatientDetails />} />
       </Routes>
     </BrowserRouter>
   );
