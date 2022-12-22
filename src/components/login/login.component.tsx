@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Authenticate } from "./login.resource";
+import Openmrs from "../../images/Openmrs.png";
+import "./login.component.css";
 
 function Login() {
   const navigate = useNavigate();
@@ -22,32 +24,36 @@ function Login() {
     console.log(username, password);
   };
   return (
-    <div>
-      <h1 className="login">Login User</h1>
+    <div className="login">
+      <h1 className="loginTitle">Login User</h1>
+      <img className="logo" src={Openmrs} alt="Logo" />
       <form onSubmit={handleSubmit} className="loginForm">
-        <label>Username</label>
+        <label className="label">Username</label>
         <br />
         <input
+          className="input"
           type="text"
           placeholder="UserName"
           onChange={(event) => setUserName(event.target.value)}
         />
         <br />
-        <label>Password</label>
+        <label className="label">Password</label>
         <br />
         <input
+          className="input"
           type="password"
           placeholder="Password"
           onChange={(event) => setPassword(event.target.value)}
         />
         <br />
-        <input type="button" value="Sign In" onClick={handleSubmit} />
+        <input
+          className="loginBtn"
+          type="button"
+          value="Sign In"
+          onClick={handleSubmit}
+        />
         <br />
-        {invalidPassword && (
-          <div>
-            <label title="Invalid password or Username" />
-          </div>
-        )}
+        {invalidPassword ? <label title="Invalid password or Username" /> : ""}
       </form>
     </div>
   );
