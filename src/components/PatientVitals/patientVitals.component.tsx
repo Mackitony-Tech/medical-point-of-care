@@ -29,7 +29,7 @@ function PatientVitals(props: any) {
 
   return (
     <>
-      <p>Vitals</p>
+      <p className="vitalsname">Patient Vitals</p>
       {vitals.length > 0 ? (
         <div className="patientVitals">
           <table title="Patient Vitals">

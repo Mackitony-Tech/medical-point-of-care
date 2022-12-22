@@ -3,3 +3,14 @@
   list-style-position: inside;
   padding: 0;
 }
+.patientVitals {
+  border: 1px solid;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.vitalsname {
+    margin-left: 10px;
+    margin-top: 10px;
+    color: blue;
+  }

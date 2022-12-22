@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { GetPatientVisit } from "./patientVisits.resource";
+import "./patientVisits.component.css";
 
 function PatientVisits(props: any) {
   const [rows, setrows] = useState([]);
@@ -30,26 +31,28 @@ function PatientVisits(props: any) {
 
   return (
     <>
-      <p>Visits</p>
+      <p className="visitsname">Patient Visits</p>
       {rows.length > 0 ? (
-        <table title="Patient Visits">
-          <thead>
-            <tr>
-              {headers.map((item, index) => (
-                <th>{item.header}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((item, index) => (
+        <div className="patient_visits">
+          <table title="Patient Visits">
+            <thead>
               <tr>
-                {headers.map((columnItem, index) => {
-                  return <td>{item[`${columnItem.key}`]}</td>;
-                })}
+                {headers.map((item, index) => (
+                  <th>{item.header}</th>
+                ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {rows.map((item, index) => (
+                <tr>
+                  {headers.map((columnItem, index) => {
+                    return <td>{item[`${columnItem.key}`]}</td>;
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       ) : (
         <p>No visits Found</p>
       )}
