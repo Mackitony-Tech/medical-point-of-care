@@ -30,6 +30,7 @@ function PatientVisits(props: any) {
 
   return (
     <>
+      <p>Visits</p>
       {rows.length > 0 ? (
         <table title="Patient Visits">
           <thead>

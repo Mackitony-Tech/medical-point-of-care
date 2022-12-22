@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { GetPatientVitals } from "./patientVitals.resource";
+import "./patientVitals.component.css";
 
 function PatientVitals(props: any) {
   const [vitals, setVitals] = useState([]);
@@ -20,8 +21,6 @@ function PatientVitals(props: any) {
       });
     }
   }, [id]);
-  console.log("Vitals", vitals);
-
   const headers = [
     { key: "location", header: "Location" },
     { key: "obsDate", header: "Date" },
@@ -30,44 +29,41 @@ function PatientVitals(props: any) {
 
   return (
     <>
-      <p>Vitals: </p>
+      <p>Vitals</p>
       {vitals.length > 0 ? (
-        <table title="Patient Vitals">
-          <thead>
-            <tr>
-              {headers.map((item, index) => (
-                <th>{item.header}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {vitals.map((item: any, index) => (
+        <div className="patientVitals">
+          <table title="Patient Vitals">
+            <thead>
               <tr>
-                {headers.map((columnItem, index) => {
-                  console.log("Column IT", columnItem);
-                  if (columnItem.key === "obs") {
-                    console.log("Item", item.obs);
-
-                    return (
-                      <td>
-                        {item.obs.map((v: any, i: any) => {
-                          console.log("VV", v.display);
-
-                          return (
-                            <li>
-                              <ul>{v.display}</ul>
-                            </li>
-                          );
-                        })}
-                      </td>
-                    );
-                  }
-                  return <td>{item[`${columnItem.key}`]}</td>;
-                })}
+                {headers.map((item, index) => (
+                  <th>{item.header}</th>
+                ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {vitals.map((item: any, index) => (
+                <tr>
+                  {headers.map((columnItem, index) => {
+                    if (columnItem.key === "obs") {
+                      return (
+                        <td>
+                          {item.obs.map((value: any, index: any) => {
+                            return (
+                              <li className="list">
+                                <ul>{value.display}</ul>
+                              </li>
+                            );
+                          })}
+                        </td>
+                      );
+                    }
+                    return <td>{item[`${columnItem.key}`]}</td>;
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       ) : (
         <p>No Vitals Found</p>
       )}

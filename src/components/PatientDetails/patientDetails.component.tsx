@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PatientVisits from "../PatientVisits/patientVisits.component";
 import PatientVitals from "../PatientVitals/patientVitals.component";
+import "./patientDetails.component.css";
 
 function PatientDetails() {
   const [id, setId] = useState("");
@@ -14,8 +15,13 @@ function PatientDetails() {
 
   return (
     <>
-      <PatientVisits id={id} />
-      <PatientVitals id={id} />
+      <div className="patientDetails">
+        <PatientVisits id={id} />
+        <div>
+          <p>....................</p>
+        </div>
+        <PatientVitals id={id} />
+      </div>
     </>
   );
 }

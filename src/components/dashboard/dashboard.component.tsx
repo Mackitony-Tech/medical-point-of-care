@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import PatientSearch from "../PatientSearch/patientSearch.component";
+import "./dashboard.component.css";
 
 function Dashboard() {
   const [isLoggedin] = useState(
@@ -12,9 +13,16 @@ function Dashboard() {
   }, [isLoggedin, navigate]);
   return (
     <>
-      <label>Ampath Medical P.O.C</label>
+      <div className="dashboard">
+        <label
+          className="dash_heading"
+          style={{ color: "darkblue", position: "absolute" }}
+        >
+          Ampath Medical P.O.C
+        </label>
 
-      <PatientSearch />
+        <PatientSearch />
+      </div>
     </>
   );
 }

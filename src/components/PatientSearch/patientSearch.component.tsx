@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import PatientVisits from "../PatientVisits/patientVisits.component";
 import { SearchPatient } from "./patientSearch.resource";
+import "./patientSearch.component.css";
 
 function PatientSearch() {
   const [patientName, setPatientName] = useState("");
@@ -10,8 +11,6 @@ function PatientSearch() {
   const navigate = useNavigate();
 
   const handleSearchChange = (e: any) => {
-    console.log(data, patientName);
-
     e.preventDefault();
     if (e.target.value.match("^[a-zA-Z ]*$") != null) {
       //validation of search
@@ -31,8 +30,6 @@ function PatientSearch() {
     });
   };
   const handleRowClick = (patientData: any) => {
-    console.log(patientData);
-
     navigate(`/patient/${patientData.id}`);
     setPatientData(patientData);
     // eslint-disable-next-line no-lone-blocks
