@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import PatientDetails from "../PatientDetails/patientDetails.component";
 import PatientVisits from "../PatientVisits/patientVisits.component";
 import { SearchPatient } from "./patientSearch.resource";
 
 function PatientSearch() {
   const [patientName, setPatientName] = useState("");
   const [data, setData] = useState([]);
-  const [patientData, setPatientData] = useState({});
+  const [, setPatientData] = useState({});
   const navigate = useNavigate();
 
   const handleSearchChange = (e: any) => {
@@ -37,7 +36,9 @@ function PatientSearch() {
     navigate(`/patient/${patientData.id}`);
     setPatientData(patientData);
     // eslint-disable-next-line no-lone-blocks
-    {patientData && <PatientVisits {...patientData}/>}
+    {
+      patientData && <PatientVisits {...patientData} />;
+    }
   };
   const headers = [
     { key: "name", header: "Name" },
@@ -47,24 +48,30 @@ function PatientSearch() {
   const PatientsTable = () => {
     return (
       <>
-        <table title="Patient search results">
-          <thead>
-            <tr>
-              {headers.map((item, index) => (
-                <th>{item.header}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, index) => (
-              <tr onClick={() => handleRowClick(item)}>
-                {headers.map((columnItem, index) => {
-                  return <td>{item[`${columnItem.key}`]}</td>;
-                })}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="patientsTable">
+          {data.length > 0 ? (
+            <table title="Patient search results">
+              <thead>
+                <tr>
+                  {headers.map((item, index) => (
+                    <th>{item.header}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((item, index) => (
+                  <tr onClick={() => handleRowClick(item)}>
+                    {headers.map((columnItem, index) => {
+                      return <td>{item[`${columnItem.key}`]}</td>;
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>No paient Found</p>
+          )}
+        </div>
       </>
     );
   };

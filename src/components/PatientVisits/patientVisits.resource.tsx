@@ -2,7 +2,7 @@ const baseUrl = "https://kibana.ampath.or.ke/openmrs/ws/rest/v1/";
 
 export const GetPatientVisit = (id: string) => {
   return window
-    .fetch(`${baseUrl}visit?patient=${id}`, {
+    .fetch(`${baseUrl}visit?patient=${id}&v=full`, {
       headers: {
         Authorization: `Basic ${window.sessionStorage.getItem("auth.token")}`,
         Cookie: `JSESSIONID=${window.sessionStorage.getItem("auth.sessionId")}`,
