@@ -21,7 +21,6 @@ function Login() {
         window.sessionStorage.setItem("auth.user.username", user.username);
       }
     );
-    console.log(username, password);
   };
   return (
     <div className="login">
