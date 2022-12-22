@@ -1,4 +1,4 @@
-const baseUrl = "https://kibana.ampath.or.ke/openmrs/ws/rest/v1/";
+const baseUrl = `${process.env.REACT_APP_BASE_URL}`;
 
 export const GetPatientVitals = (id: string) => {
   return window
