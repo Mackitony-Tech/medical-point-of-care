@@ -66,7 +66,7 @@ function PatientSearch() {
               </tbody>
             </table>
           ) : (
-            <p>No paient Found</p>
+            <p className="no_patient">No paient Found</p>
           )}
         </div>
       </>
@@ -76,6 +76,7 @@ function PatientSearch() {
     <>
       <br />
       <input
+      className="search"
         type="text"
         placeholder="Search Patient"
         value={patientName}

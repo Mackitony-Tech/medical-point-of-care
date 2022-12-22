@@ -29,7 +29,9 @@ function PatientDetails() {
         />
         <PatientVisits id={id} />
         <div>
-          <p>....................</p>
+          <p className="separator">
+            ................................................................................
+          </p>
         </div>
         <PatientVitals id={id} />
       </div>

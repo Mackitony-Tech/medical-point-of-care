@@ -6,3 +6,7 @@
   border: groove rgb(223, 220, 220);
   padding: 0.25rem;
 }
+.separator {
+  color: black;
+  position: relative;
+}
